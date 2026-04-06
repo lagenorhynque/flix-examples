@@ -77,7 +77,7 @@ mod TaglessFinal {
         add(int(1), mul(int(2), int(3)))
 
     def exp2(): repr[Bool] with Expr[repr] =
-        use Expr.{int, add, mul, eq};
+        use Expr.{int, eq};
         eq(exp1(), int(7))
 
     pub def evalExample2(): Unit \ IO =
