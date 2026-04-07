@@ -86,11 +86,11 @@ mod FreeMonad {
             case (s, Free.Free(RPNExpr.Num(n, next))) =>
                 calc(n :: s, next)
             case (n1 :: n2 :: ns, Free.Free(RPNExpr.Add(next))) =>
-                calc(Add.add(n2, n1) :: ns, next)
+                calc(n2 + n1 :: ns, next)
             case (n1 :: n2 :: ns, Free.Free(RPNExpr.Sub(next))) =>
-                calc(Sub.sub(n2, n1) :: ns, next)
+                calc(n2 - n1 :: ns, next)
             case (n1 :: n2 :: ns, Free.Free(RPNExpr.Mul(next))) =>
-                calc(Mul.mul(n2, n1) :: ns, next)
+                calc(n2 * n1 :: ns, next)
             case (n :: _, Free.Pure(_)) =>
                 Ok(n)
             case _ =>
