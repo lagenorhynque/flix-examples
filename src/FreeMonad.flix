@@ -113,8 +113,8 @@ mod FreeMonad {
         ) yield ()
 
     pub def example1(): Unit \ IO =
-        println("exp pretty prints to: ${pretty(exp1())}");
-        println("exp evaluates to: ${eval(exp1())}")
+        println("exp1 pretty prints to: ${pretty(exp1())}");
+        println("exp1 evaluates to: ${eval(exp1())}")
 
     // the same expression using applicative style
     def exp2(): RPN[Int32, Unit] =
@@ -122,6 +122,6 @@ mod FreeMonad {
         num(1) *> num(2) *> add() *> num(3) *> mul() *> num(4) *> sub()
 
     pub def example2(): Unit \ IO =
-        println("exp pretty prints to: ${pretty(exp2())}");
-        println("exp evaluates to: ${eval(exp2())}")
+        println("exp2 pretty prints to: ${pretty(exp2())}");
+        println("exp2 evaluates to: ${eval(exp2())}")
 }
