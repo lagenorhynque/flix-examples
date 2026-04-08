@@ -101,7 +101,7 @@ mod FreeMonad {
 
     // an example expression: 1 2 + 3 * 4 -
 
-    def exp(): RPN[Int32, Unit] =
+    def exp1(): RPN[Int32, Unit] =
         forM (
             _ <- num(1);
             _ <- num(2);
@@ -112,7 +112,16 @@ mod FreeMonad {
             _ <- sub()
         ) yield ()
 
-    pub def example(): Unit \ IO =
-        println("exp pretty prints to: ${pretty(exp())}");
-        println("exp evaluates to: ${eval(exp())}")
+    pub def example1(): Unit \ IO =
+        println("exp pretty prints to: ${pretty(exp1())}");
+        println("exp evaluates to: ${eval(exp1())}")
+
+    // the same expression using applicative style
+    def exp2(): RPN[Int32, Unit] =
+        use Applicative.*>;
+        num(1) *> num(2) *> add() *> num(3) *> mul() *> num(4) *> sub()
+
+    pub def example2(): Unit \ IO =
+        println("exp pretty prints to: ${pretty(exp2())}");
+        println("exp evaluates to: ${eval(exp2())}")
 }
