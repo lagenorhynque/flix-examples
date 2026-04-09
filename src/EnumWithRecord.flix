@@ -2,10 +2,9 @@ mod EnumWithRecord {
     enum Person({ name = String, age = Int32 })
 
     instance ToString[Person] {
-        pub def toString(p: Person): String = match p {
-            case Person.Person({ name, age }) =>
-                "Person(name = ${name}, age = ${age})"
-        }
+        pub def toString(p: Person): String =
+            let Person.Person({ name, age }) = p;
+            "Person(name = ${name}, age = ${age})"
     }
 
     pub def example(): Unit \ IO =
