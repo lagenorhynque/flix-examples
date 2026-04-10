@@ -8,7 +8,7 @@ mod AlgebraicEffect {
     }
 
     // a pretty printer for RPN expressions
-    pub def pretty(expr: Unit -> Unit \ IntRPN): String =
+    pub def runPretty(expr: Unit -> Unit \ ef): String \ ef - IntRPN =
         region rc {
             let buffer: MutList[String, rc] = MutList.empty(rc);
             run {
@@ -35,7 +35,7 @@ mod AlgebraicEffect {
         }
 
     // an evaluator for RPN expressions
-    pub def eval(expr: Unit -> Unit \ IntRPN): Result[String, Int32] =
+    pub def runEval(expr: Unit -> Unit \ ef): Result[String, Int32] \ ef - IntRPN =
         region rc {
             let stack: MutList[Int32, rc] = MutList.empty(rc);
             run {
@@ -83,6 +83,8 @@ mod AlgebraicEffect {
     }
 
     pub def example(): Unit \ IO =
-        println("exp pritter prints to: ${pretty(exp)}");
-        println("exp evaluates to: ${eval(exp)}")
+        let s = run { exp() } with runPretty;
+        println("exp pritter prints to: ${s}");
+        let n = run { exp() } with runEval;
+        println("exp evaluates to: ${n}")
 }
