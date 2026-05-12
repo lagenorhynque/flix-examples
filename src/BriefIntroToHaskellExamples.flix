@@ -1,12 +1,12 @@
 // ref. https://github.com/fpinscala/fpinscala/wiki/A-brief-introduction-to-Haskell,-and-why-it-matters
 mod BriefIntroToHaskellExamples {
-    use Sys.Console;
+    use Sys.Console
 
     pub def main(): Unit \ {IO, Console} =
         println("Hello world!!");
         Console.println("Echo-inator v2.0");
         let s = Console.readln();
-        Console.println(s)
+        Console.println("${s}")
 
     pub def f1(): Int32 = f2() + magicValue()
 
