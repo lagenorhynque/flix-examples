@@ -1,7 +1,7 @@
 use Sys.Process
 
 // The main entry point.
-def main(): Unit \ { Process, Abort, IO } =
+def main(): Unit \ {Process, Abort, IO} =
     println("Hello World!");
 
     let n = 5;
@@ -14,7 +14,7 @@ def main(): Unit \ { Process, Abort, IO } =
 def square(x: Int32): Int32 =
     x * x
 
-def runProcess(): Result[IoError, String] \ { Process, IO } =
+def runProcess(): Result[IoError, String] \ {Process, IO} =
     region rc {
         forM (
             ph <- Process.exec("ls", Nil);

@@ -2,7 +2,7 @@ mod FreeMonad {
     // a Free monad over a Functor f
 
     pub enum Free[f: Type -> Type, a: Type] {
-        case Pure(a),
+        case Pure(a)
         case Free(f[Free[f, a]])
     }
 
@@ -36,9 +36,9 @@ mod FreeMonad {
     // RPN expressions as a Functor
 
     enum RPNExpr[n, next] {
-        case Num(n, next),
-        case Add(next),
-        case Sub(next),
+        case Num(n, next)
+        case Add(next)
+        case Sub(next)
         case Mul(next)
     }
 
