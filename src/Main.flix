@@ -8,8 +8,8 @@ def main(): Unit \ { Process, Abort, IO } =
     println("The square of ${n} is ${square(n)}.");
 
     runProcess()
-    |> Result.getOrAbort
-    |> x -> println("Process output:\n${x}")
+        |> Result.getOrAbort
+        |> x -> println("Process output:\n${x}")
 
 def square(x: Int32): Int32 =
     x * x
