@@ -21,13 +21,13 @@ mod TaglessFinal {
         pub def num(n: a): Eval[a] with ToString[a] = Eval.Eval(n)
         pub def bool(b: Bool): Eval[Bool] = Eval.Eval(b)
         pub def add(e1: Eval[a], e2: Eval[a]): Eval[a] with Add[a] =
-            let (Eval.Eval(x), Eval.Eval(y)) = ( e1, e2 );
+            let (Eval.Eval(x), Eval.Eval(y)) = (e1, e2);
             Eval.Eval(x + y)
         pub def mul(e1: Eval[a], e2: Eval[a]): Eval[a] with Mul[a] =
-            let (Eval.Eval(x), Eval.Eval(y)) = ( e1, e2 );
+            let (Eval.Eval(x), Eval.Eval(y)) = (e1, e2);
             Eval.Eval(x * y)
         pub def eq(e1: Eval[a], e2: Eval[a]): Eval[Bool] with Eq[a] =
-            let (Eval.Eval(x), Eval.Eval(y)) = ( e1, e2 );
+            let (Eval.Eval(x), Eval.Eval(y)) = (e1, e2);
             Eval.Eval(x == y)
     }
 
