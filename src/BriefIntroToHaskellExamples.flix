@@ -2,7 +2,7 @@
 mod BriefIntroToHaskellExamples {
     use Sys.Console
 
-    pub def main(): Unit \ {IO, Console} =
+    pub def main(): Unit \ { IO, Console } =
         println("Hello world!!");
         Console.println("Echo-inator v2.0");
         let s = Console.readln();
@@ -22,7 +22,7 @@ mod BriefIntroToHaskellExamples {
         @Tailrec
         def go(x: Int32, acc: Int32): Int32 = match x {
             case 0 => acc
-            case y => go (y - 1, y * acc)
+            case y => go(y - 1, y * acc)
         };
         go(n, 1)
 
@@ -37,7 +37,7 @@ mod BriefIntroToHaskellExamples {
     }
 
     pub def headOption(xs: List[a]): Option[a] = match xs {
-        case List.Nil => Option.None
+        case List.Nil        => Option.None
         case List.Cons(h, _) => Option.Some(h)
     }
 
@@ -47,7 +47,7 @@ mod BriefIntroToHaskellExamples {
     }
 
     pub def foldRight(f: (a, b) -> b, z: b, xs: List[a]): b = match xs {
-        case List.Nil => z
+        case List.Nil        => z
         case List.Cons(h, t) => f(h, foldRight(f, z, t))
     }
 
@@ -60,7 +60,7 @@ mod BriefIntroToHaskellExamples {
 
     instance Functor[Option] {
         pub def fmap(f: a -> b, fa: Option[a]): Option[b] = match fa {
-            case Option.None => Option.None
+            case Option.None    => Option.None
             case Option.Some(a) => Option.Some(f(a))
         }
     }
@@ -100,7 +100,7 @@ mod BriefIntroToHaskellExamples {
     instance Monad[Option] {
         pub def return(a: a): Option[a] = Option.Some(a)
         pub def >>=(ma: Option[a], f: a -> Option[b]): Option[b] = match ma {
-            case Option.None => Option.None
+            case Option.None    => Option.None
             case Option.Some(a) => f(a)
         }
     }
@@ -110,11 +110,12 @@ mod BriefIntroToHaskellExamples {
     instance Monad[State[s]] {
         pub def return(a: a): State[s, a] = State.State(s -> (a, s))
         pub def >>=(ma: State[s, a], f: a -> State[s, b]): State[s, b] =
-            State.State(s0 ->
-                let State.State(runState1) = ma;
-                let (a, s1) = runState1(s0);
-                let State.State(runState2) = f(a);
-                runState2(s1)
+            State.State(
+                s0 ->
+                    let State.State(runState1) = ma;
+                    let (a, s1) = runState1(s0);
+                    let State.State(runState2) = f(a);
+                    runState2(s1)
             )
     }
 }

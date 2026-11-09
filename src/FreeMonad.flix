@@ -45,9 +45,9 @@ mod FreeMonad {
     instance Functor[RPNExpr[n]] {
         pub def map(f: a -> b \ ef, x: RPNExpr[n, a]): RPNExpr[n, b] \ ef = match x {
             case RPNExpr.Num(n, next) => RPNExpr.Num(n, f(next))
-            case RPNExpr.Add(next) => RPNExpr.Add(f(next))
-            case RPNExpr.Sub(next) => RPNExpr.Sub(f(next))
-            case RPNExpr.Mul(next) => RPNExpr.Mul(f(next))
+            case RPNExpr.Add(next)    => RPNExpr.Add(f(next))
+            case RPNExpr.Sub(next)    => RPNExpr.Sub(f(next))
+            case RPNExpr.Mul(next)    => RPNExpr.Mul(f(next))
         }
     }
 

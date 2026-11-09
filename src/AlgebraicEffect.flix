@@ -41,7 +41,7 @@ mod AlgebraicEffect {
             run {
                 expr();
                 match MutList.pop(stack) {
-                    case None => Err("Empty stack")
+                    case None         => Err("Empty stack")
                     case Some(result) => Ok(result)
                 }
             } with handler IntRPN {
